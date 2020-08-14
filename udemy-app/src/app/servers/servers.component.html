@@ -1,2 +1,45 @@
+<label for="username">Username</label>
+<input
+  type="text"
+  name="username"
+  class="form-control"
+  [(ngModel)]="userName"
+/>
+<button
+  class="btn btn-primary"
+  [disabled]="userName === ''"
+  (click)="onResetName()"
+>
+  Reset User
+</button>
+<p>{{ userName }}</p>
+<hr />
+<label for="servername">Server Name</label>
+<!-- <input
+  type="text"
+  name="servername"
+  class="form-control"
+  (input)="onUpdateServerName($event)"
+/> -->
+<input
+  type="text"
+  name="servername"
+  class="form-control"
+  [(ngModel)]="serverName"
+/>
+<!-- <p>{{ serverName }}</p> -->
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()"
+>
+  Add Server
+</button>
+<!-- Can you property binding or string interpolation to accomplish the same thing.
+	However, string interpolation should be used to display values while data binding controls properties
+	Do not mix property binding and string interpolation, you cannot reference a string interpolation
+	inside of the property binding expression -->
+<!-- <p [innerText]="allowNewServer"></p> (OR) <p>{{ allowNewServer }}</p> -->
+<p>{{ serverCreationStatus }}</p>
 <app-server></app-server>
 <app-server></app-server>
