@@ -1,2 +1,7 @@
 <!-- {{ value }} needs to return a string or something that can be converted into a string (e.g. number). You can pass a variable, create a ternary operator, or call a function that returns a string. -->
-<p>Server with ID {{ serverId }} is {{ getServerStatus() }}</p>
+<p
+  [ngStyle]="{ backgroundColor: getColor() }"
+  [ngClass]="{ online: serverStatus === 'online' }"
+>
+  Server with ID {{ serverId }} is {{ getServerStatus() }}
+</p>

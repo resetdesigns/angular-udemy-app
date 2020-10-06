@@ -40,6 +40,24 @@
 	Do not mix property binding and string interpolation, you cannot reference a string interpolation
 	inside of the property binding expression -->
 <!-- <p [innerText]="allowNewServer"></p> (OR) <p>{{ allowNewServer }}</p> -->
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<!-- The star is required because its a structural directive / this will change the DOM -->
+<!-- <p *ngIf="serverCreated; else noServer">-->
+<!-- # represents a local reference  -->
+<!-- <ng-template #noServer> <p>No server was created!</p></ng-template> -->
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+<app-server *ngFor="let server of servers"></app-server>
+<hr />
+<p><strong>Details</strong></p>
+<button class="btn btn-primary" (click)="onDisplayDetails($event)">
+  Display Details
+</button>
+<p *ngIf="displayDetails">Secret password = tuna</p>
+<p>Details:</p>
+<p
+  *ngFor="let logItem of log; let i = index"
+  [ngStyle]="{ backgroundColor: i >= 4 ? 'blue' : 'transparent' }"
+>
+  {{ detailsMsg }}
+</p>
+<div *ngFor="let logItem of log">{{ logItem }}</div>
